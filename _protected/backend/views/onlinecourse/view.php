@@ -23,18 +23,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Back to Home', ['onlinecourse/index'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
+            'coursecatgories_id',
+            'sub_course_id',
+            'skilllavel_id',
             'name',
-            'teacher',
             'description',
-            'rate',
-            'images',
+            'teacher',
+            'Price',
+            'image',
         ],
     ]) ?>
 

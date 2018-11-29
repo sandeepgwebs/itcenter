@@ -1,5 +1,8 @@
+<?php
+    use yii\widgets\LinkPager;
+?>
 <div class="row">
-    <?php foreach($model as $show){?>
+    <?php foreach($model as $show):?>
     <div class="col-sm-6">
         <div class="traning">
             <img src="<?=\yii\helpers\Url::base().'/uploads/onlinecourse/'.$show->images?>">
@@ -17,5 +20,11 @@
             </div>
         </div>
     </div>
-    <?php } ?>
+    <?php  ?>
+    <?php endforeach; ?>
+    <?php
+    echo LinkPager::widget([
+        'pagination' => $pagination,
+    ]);
+    ?>
 </div>

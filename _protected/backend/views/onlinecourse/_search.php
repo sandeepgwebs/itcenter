@@ -17,15 +17,21 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
+    <?= $form->field($model, 'coursecatgories_id') ?>
+
+    <?= $form->field($model, 'sub_course_id') ?>
+
+    <?= $form->field($model, 'skilllavel_id') ?>
+
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'teacher') ?>
+    <?php // echo $form->field($model, 'description') ?>
 
-    <?= $form->field($model, 'description') ?>
+    <?php // echo $form->field($model, 'teacher') ?>
 
-    <?= $form->field($model, 'rate') ?>
+    <?php // echo $form->field($model, 'Price') ?>
 
-    <?php // echo $form->field($model, 'images') ?>
+    <?php // echo $form->field($model, 'image') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

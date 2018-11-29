@@ -7,10 +7,10 @@
 			dots:false,
 			items:1,
 			autoHeight: false,
-			navText:["<i class='icon-left-arrow'></i>","<i class='icon-right-arrow'></i>"],
+			navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
 		});
 
-		$('.nav li').on('click',function(){
+		$('.navbar-nav li a').on('click',function(){
 		   $('.active').removeClass('active');
 		   $(this).addClass('active');
 		});

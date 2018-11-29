@@ -27,13 +27,14 @@ use Yii\helpers\Url;
                 <li>
                     <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="<?=Url::base()?>/slider/">Create Slider Images</a><span class="label label-primary pull-right">NEW</span></li>
+                        <li><a href="<?=Url::base()?>/slider/">Slider Images</a><span class="label label-primary pull-right">NEW</span></li>
+                        <li><a href="<?=Url::base()?>/coursecatgories">Course Catgories</a></li>
+                        <li><a href="<?=Url::base()?>/skilllavel">Skill Level</a></li>
                         <li><a href="<?=Url::base()?>/onlinecourse">Add Online Course</a></li>
                         <li><a href="<?=Url::base()?>/events">Upcomeing Events</a></li>
                         <li><a href="<?=Url::base()?>/latestnews">Latest News<span class="label label-primary pull-right">NEW</span></a></li>
                     </ul>
                 </li>
-
             </ul>
 
         </div>

@@ -11,37 +11,36 @@ use yii\helpers\Html;
 
 use yii\helpers\ArrayHelper;
 
+use yii\helpers\Url;
+
 use yii\widgets\ActiveForm;
 ?>
-<?= homepageslide::widget()?>
 
+<?= homepageslide::widget()?>
 
 <div class="container">
     <div class="slider-form">
-        <form id="home_search_form_2" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between" action="#">
-            <?php $form = ActiveForm::begin([
-                'action'  => ['search'],
-                'method'  => 'get',
-             ]);?>
-            <div class="d-flex flex-row align-items-center justify-content-start">
-                <input class="home_search_input" name="search" placeholder="Keyword Search"   type="search">
-
-                <div class="dropdown_item_select home_search_input ">
-                    <?= $form->field($model, 'name')->dropDownList(ArrayHelper::map(common\models\Onlinecourse::find()->asArray()->all(), 'id', 'name'),['prompt'=>'Select Any Course'])?>
-                </div>
-
-                <div class="dropdown_item_select home_search_input ">
-                    <?= $form->field($model, 'name')->dropDownList(ArrayHelper::map(common\models\Onlinecourse::find()->asArray()->all(), 'id', 'rate'),['prompt'=>'Course Price'])?>
-                </div>
-
-            </div>
-            <?= Html::submitButton('Submit', ['submit'],['class' => 'home_search_button']) ?>
-            <?php ActiveForm::end(); ?>
-        </form>
+        <?php $form = ActiveForm::begin(['action' => 'search','method' => 'GET']); ?>
+           <?php  $dataCategory=ArrayHelper::map(common\models\coursecatgories::find()->asArray()->all(), 'id', 'name');
+               echo $form->field($model, 'coursecatgories_id')->dropDownList($dataCategory,
+               ['prompt'=>'-Choose a Category-',
+               'onchange'=>'
+               $.post( "'.Yii::$app->urlManager->createUrl('site/lists?id=').'"+$(this).val(), function( data ) {
+               $( "select#name" ).html( data );
+               });
+           ']);
+           $dataPost=ArrayHelper::map(common\models\sub_course::find()->asArray()->all(), 'id', 'name');
+                echo $form->field($model, 'id')
+                    ->dropDownList(
+                    $dataPost,
+                    ['id'=>'name']
+                )->label(false);
+           ?>
+        <?= $form->field($model, 'name');?>
+        <?= Html::submitButton('Search', ['class' => 'home_search_button']) ?>
+        <?php ActiveForm::end(); ?>
     </div>
 </div>
-
-
 
 <div class="learning">
     <div class="container">
@@ -96,7 +95,7 @@ use yii\widgets\ActiveForm;
      <?= onlinecoursess::widget()?>
 
     <div class="view-all">
-        <a href="#">view all</a>
+        <?= Html::a('view all',['site/courses'])?>
     </div>
 </div>
 
@@ -119,7 +118,7 @@ use yii\widgets\ActiveForm;
             <div class="col-sm-6">
                 <div class="form">
                     <h1>courses now</h1>
-                    <?php $form = ActiveForm::begin(); ?>
+                    <?php /*$form = ActiveForm::begin(['action' => 'contect','method' => 'GET']); ?>
                         <div class="form-group">
                             <?= $form->field($model, 'name') ?>
                         </div>
@@ -138,7 +137,7 @@ use yii\widgets\ActiveForm;
 
                         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
 
-                     <?php ActiveForm::end(); ?>
+                     <?php ActiveForm::end();  */?>
                 </div>
             </div>
         </div>

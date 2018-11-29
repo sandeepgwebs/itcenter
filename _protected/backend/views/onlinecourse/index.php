@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Online course', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Onlinecourse', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -24,12 +24,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+
             'id',
+            'coursecatgories_id',
+            'sub_course_id',
+            'skilllavel_id',
             'name',
-            'teacher',
             'description',
-            'rate',
-            'images',
+            'teacher',
+            'Price',
+            [
+                //view images backend
+                'attribute'=>'images',
+                'value' => function ($model) {
+                    return \yii\helpers\Html::img('@uploads/onlinecourse/' .$model->image,[ 'width' => '80px', 'height' => '80px']);
+                },
+                'format' => 'raw',
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

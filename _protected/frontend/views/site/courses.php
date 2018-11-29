@@ -1,7 +1,11 @@
 <?php
     use common\components\coursepage;
     use common\components\latestside;
+    use common\components\showcatgouries;
+    use yii\helpers\Url;
+    use yii\helpers\Html;
 ?>
+
 <div class="pagers">
     <div class="container">
         <ul>
@@ -17,12 +21,12 @@
         <div class="row">
             <div class="col-sm-8">
                 <div class="search-form">
-                    <form>
+                    <form id="home_search_form_2" action="<?=Url::base()?>/site/search" method="get">
                         <div class="form-group">
-                            <input type="course" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="search course" required="required">
+                            <input type="course" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="search" placeholder="search course" required="required">
                         </div>
                         <div class="form-group">
-                            <select class="form-control" id="exampleFormControlSelect2" required="required">
+                            <select class="form-control" id="exampleFormControlSelect2"  required="required">
                                 <option>Default select</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -31,29 +35,14 @@
                                 <option>5</option>
                             </select>
                         </div>
-
-                        <button type="submit" class="btns btn-primary">Submit</button>
+                        <?= Html::submitButton('Search', ['class' => 'btns btn-primary']) ?>
                     </form>
                 </div>
-
                 <?= coursepage::widget()?>
-
             </div>
-
             <div class="col-sm-4">
-                <div class="Categories">
-                    <h1>Categories</h1>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Art & Design </a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Business </a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>IT & Software </a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Languages </a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Programming </a></li>
-                    </ul>
-                </div>
-
+                 <?= showcatgouries::widget() ?>
                  <?= latestside::widget() ?>
-
                 <div class="Categories-Instagram">
                     <h1>Instagram</h1>
                     <ul>

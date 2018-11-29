@@ -13,7 +13,11 @@
             </div>
             <div class="col-sm-6">
                 <div class="register">
-                    <a href="#">Login or Register</a>
+                    <?php if(Yii::$app->user->isGuest) { ?>
+                        <?= Html::a('Login / Register', ['site/login'], [])?><?php
+                    } else { ?>
+                          <a class="btn" data-method="get" href="logout">Logout (<?=yii::$app->user->identity->username?>)</a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -32,7 +36,7 @@
                 <li><?= Html::a('courses', ['site/courses'], []) ?></li>
                 <li><?= Html::a('blog', ['site/blog'], []) ?></li>
                 <li><?= Html::a('page', ['site/page'], []) ?></li>
-                <li><?= Html::a('contect', ['site/contect'], []) ?></li>
+                <li><?= Html::a('contact', ['site/contect'], []) ?></li>
                 <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
             </ul>
         </div>

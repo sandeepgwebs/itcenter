@@ -62,12 +62,13 @@ class OnlinecourseController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate( )
     {
         $model = new onlinecourse();
+
         if($model->load(Yii::$app->request->post())){
-            $model->images = UploadedFile::getInstance($model, 'images');
-            if ($model->validate() && $model->images->saveAs('../uploads/onlinecourse/' . $model->images->baseName . '.' . $model->images->extension)) {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if ($model->validate() && $model->image->saveAs('../uploads/onlinecourse/' . $model->image->baseName . '.' . $model->image->extension)) {
                 $model->save();
                 return $this->redirect(['index', 'id' => $model->id]);
             }
@@ -107,7 +108,6 @@ class OnlinecourseController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 
@@ -123,7 +123,6 @@ class OnlinecourseController extends Controller
         if (($model = onlinecourse::findOne($id)) !== null) {
             return $model;
         }
-
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

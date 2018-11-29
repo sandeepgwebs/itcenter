@@ -16,9 +16,12 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use Yii;
 use common\models\customForm;
+use common\models\customformSearch;
 use common\models\coursenow;
 use common\models\onlinecourseSearch;
 use common\models\onlinecourse;
+use common\models\usercourse;
+use common\models\sub_course;
 
 /**
  * Site controller.
@@ -54,7 +57,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['get'],
                 ],
             ],
         ];
@@ -128,30 +131,57 @@ class SiteController extends Controller
         }
     }
 
+    public function actionLists($id)
+    {
+        $posts = \common\models\Sub_course::find()
+            ->where(['coursecatgories_id' => $id])
+            ->orderBy('id DESC')
+            ->all();
+
+        if (!empty($posts)) {
+            foreach($posts as $post) {
+                echo "<option value='".$post->id."'>".$post->name."</option>";
+            }
+        } else {
+            echo "<option>-</option>";
+        }
+
+    }
+
     public function actionIndex()
     {
-        $model = new Coursenow();
+        $model = new Sub_course();
         if($model->load(Yii::$app->request->post()) && $model->save()){
             return $this->refresh();
         }
-        else{
+        else {
             return $this->render('index', ['model' => $model]);
         }
-
     }
+// custom search form
 
     public function actionSearch()
     {
-        $searchModel = new onlinecourseSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        //return $this->render('index');
-        return $this->render('confirm', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+       // echo "<pre>"; print_r($_GET); die;
+        $params = Yii::$app->request->get();
+        $model = ['common\models\onlinecourse'];
+        $search = new customformsearch();
+        $Newsresults = $search->search($params,$model[0],'name');
+        return $this->render('confirm', ['Newsprovider'=>$Newsresults,]);
     }
 
-
+    public function actionSearchresult()
+    {
+        /*$searchModel = new Onlinecourse();
+        $model = new Sub_course();
+        $model->load(Yii::$app->request->get());
+        echo "<pre>";print_r($model);die;/*
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams());
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);*/
+    }
     /**
      * Displays the contact static page and sends the contact email.
      *
@@ -165,14 +195,13 @@ class SiteController extends Controller
         {
             if ($model->contact(Yii::$app->params['adminEmail'])) 
             {
-                Yii::$app->session->setFlash('success', 
+                Yii::$app->session->setFlash('success',
                     'Thank you for contacting us. We will respond to you as soon as possible.');
             } 
             else 
             {
                 Yii::$app->session->setFlash('error', 'There was an error sending email.');
             }
-
             return $this->refresh();
         } 
         
@@ -235,7 +264,6 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
         return $this->goHome();
     }
 

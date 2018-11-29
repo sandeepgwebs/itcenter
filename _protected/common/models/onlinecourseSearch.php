@@ -18,8 +18,8 @@ class onlinecourseSearch extends onlinecourse
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name', 'teacher', 'description', 'rate', 'images'], 'safe'],
+            [['id', 'coursecatgories_id', 'sub_course_id', 'skilllavel_id'], 'integer'],
+            [['name', 'description', 'teacher', 'Price', 'image'], 'safe'],
         ];
     }
 
@@ -60,14 +60,18 @@ class onlinecourseSearch extends onlinecourse
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'coursecatgories_id' => $this->coursecatgories_id,
+            'sub_course_id' => $this->sub_course_id,
+            'skilllavel_id' => $this->skilllavel_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'teacher', $this->teacher])
             ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'rate', $this->rate])
-            ->andFilterWhere(['like', 'images', $this->images]);
+            ->andFilterWhere(['like', 'teacher', $this->teacher])
+            ->andFilterWhere(['like', 'Price', $this->Price])
+            ->andFilterWhere(['like', 'image', $this->image]);
 
         return $dataProvider;
     }
 }
+

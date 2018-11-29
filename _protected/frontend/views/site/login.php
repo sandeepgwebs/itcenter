@@ -9,7 +9,8 @@ use yii\bootstrap\ActiveForm;
 $this->title = Yii::t('app', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
+<div class="container">
+    <div class="site-login">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -32,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div style="color:#999;margin:1em 0">
             <?= Yii::t('app', 'If you forgot your password you can') ?>
             <?= Html::a(Yii::t('app', 'reset it'), ['site/request-password-reset']) ?>.
+            <?= Html::a('signup', ['site/signup'], []) ?>
         </div>
 
         <div class="form-group">
@@ -40,6 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php ActiveForm::end(); ?>
 
+      </div>
     </div>
-  
+
 </div>
