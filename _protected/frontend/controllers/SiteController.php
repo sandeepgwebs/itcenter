@@ -135,9 +135,7 @@ class SiteController extends Controller
     {
         $posts = \common\models\Sub_course::find()
             ->where(['coursecatgories_id' => $id])
-            ->orderBy('id DESC')
-            ->all();
-
+            ->orderBy('id DESC')->all();
         if (!empty($posts)) {
             foreach($posts as $post) {
                 echo "<option value='".$post->id."'>".$post->name."</option>";
@@ -145,7 +143,6 @@ class SiteController extends Controller
         } else {
             echo "<option>-</option>";
         }
-
     }
 
     public function actionIndex()
@@ -167,20 +164,18 @@ class SiteController extends Controller
         $model = ['common\models\onlinecourse'];
         $search = new customformsearch();
         $Newsresults = $search->search($params,$model[0],'name');
-        return $this->render('confirm', ['Newsprovider'=>$Newsresults,]);
+        return $this->render('courseshowsearch', ['Newsprovider'=>$Newsresults]);
     }
 
     public function actionSearchresult()
     {
-        /*$searchModel = new Onlinecourse();
-        $model = new Sub_course();
-        $model->load(Yii::$app->request->get());
-        echo "<pre>";print_r($model);die;/*
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams());
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);*/
+        $searchModel = new onlinecourseSearch();
+        $dataprovider = $searchModel->search(Yii::$app->request->queryParams);
+        $Newsproviders = $dataprovider->getModels() ;
+        return $this->render('confirm', [
+            'Newsprovider' => $Newsproviders,
+            'Searchmodel' => $searchModel,
+        ]);
     }
     /**
      * Displays the contact static page and sends the contact email.

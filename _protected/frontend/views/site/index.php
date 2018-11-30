@@ -20,26 +20,35 @@ use yii\widgets\ActiveForm;
 
 <div class="container">
     <div class="slider-form">
-        <?php $form = ActiveForm::begin(['action' => 'search','method' => 'GET']); ?>
-           <?php  $dataCategory=ArrayHelper::map(common\models\coursecatgories::find()->asArray()->all(), 'id', 'name');
+         <?php $form = ActiveForm::begin(['action' => 'searchresult','method' => 'get']); ?>
+        <div class="dropdown_item_select home_search_input ">
+            <?php  $dataCategory=ArrayHelper::map(common\models\coursecatgories::find()->asArray()->all(), 'id', 'name');
                echo $form->field($model, 'coursecatgories_id')->dropDownList($dataCategory,
                ['prompt'=>'-Choose a Category-',
                'onchange'=>'
                $.post( "'.Yii::$app->urlManager->createUrl('site/lists?id=').'"+$(this).val(), function( data ) {
                $( "select#name" ).html( data );
                });
-           ']);
-           $dataPost=ArrayHelper::map(common\models\sub_course::find()->asArray()->all(), 'id', 'name');
+           '])->label(false);?>
+        </div>
+
+        <div class="dropdown_item_select home_search_input ">
+           <?php $dataPost=ArrayHelper::map(common\models\sub_course::find()->asArray()->all(), 'id', 'name');
                 echo $form->field($model, 'id')
                     ->dropDownList(
                     $dataPost,
                     ['id'=>'name']
                 )->label(false);
            ?>
-        <?= $form->field($model, 'name');?>
-        <?= Html::submitButton('Search', ['class' => 'home_search_button']) ?>
+        </div>
+
+        <div class="dropdown_item_select home_search_input ">
+             <?= $form->field($model, 'name')->label(false);?>
+        </div>
+         <?= Html::submitButton('Search', ['class' => 'home_search_button']) ?>
         <?php ActiveForm::end(); ?>
     </div>
+
 </div>
 
 <div class="learning">

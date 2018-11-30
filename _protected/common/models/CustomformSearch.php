@@ -12,18 +12,20 @@ class CustomformSearch extends Model
     }
 
     public function search($params,$model,$colmn)
-    {
-       /* $query = $model::find();
+    {// working search model
+        $query = $model::find();
         $query->andFilterWhere(['like',$colmn, $params]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-        $this->load($params);*/
-        $dataProvider  = $model::find()->where(['coursecatgories_id'=>$params['Sub_course']['coursecatgories_id'],'sub_course_id'=>$params['Sub_course']['sub_course_id']])->all();
-        $dataProvider->andFilterWhere([
+        $this->load($params);
+
+//working
+       /* $dataProvider  = $model::find()->where(['coursecatgories_id'=>$params['Sub_course']['coursecatgories_id'],'sub_course_id'=>$params['Sub_course']['id']])->andFilterWhere([
             'or',
             ['like', 'name', $params['Sub_course']['name']],
-        ]);
+        ])->all();*/
+
         return $dataProvider;
     }
 }

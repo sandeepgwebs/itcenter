@@ -5,7 +5,7 @@
     <?php foreach($model as $show):?>
     <div class="col-sm-6">
         <div class="traning">
-            <img src="<?=\yii\helpers\Url::base().'/uploads/onlinecourse/'.$show->images?>">
+            <img src="<?=\yii\helpers\Url::base().'/uploads/onlinecourse/'.$show->image?>">
             <div class="software">
                 <a href="#"><?= $show->name?></a>
                 <h4><?= $show->teacher?></h4>
@@ -14,7 +14,7 @@
                     <ul>
                         <li><i class="fa fa-graduation-cap" aria-hidden="true"></i>20 Student</li>
                         <li><i class="fa fa-star" aria-hidden="true"></i>5 Ratings</li>
-                        <span class="doller">$<?=$show->rate?></span>
+                        <span class="doller">$250</span>
                     </ul>
                 </div>
             </div>

@@ -11,11 +11,11 @@
             ?>
             <div class="cover-post">
                 <div class="latest-image">
-                    <img src="<?= \yii\helpers\Url::base() . '/uploads/onlinecourse/' . $side->images ?>">
+                    <img src="<?= \yii\helpers\Url::base() . '/uploads/onlinecourse/' . $side->image ?>">
                 </div>
                 <div class="latest-title">
                     <a href="#"><?= $side->name ?></a><br>
-                    <span class="rate">$<?= $side->rate ?></span>
+                    <span class="rate">$250</span>
                 </div>
             </div>
             <?php

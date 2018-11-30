@@ -41,7 +41,8 @@ class onlinecourseSearch extends onlinecourse
      */
     public function search($params)
     {
-        $query = onlinecourse::find();
+        //echo "<pre>"; print_r($params);
+        $query = onlinecourse::find() ;
 
         // add conditions that should always apply here
 
@@ -49,28 +50,20 @@ class onlinecourseSearch extends onlinecourse
             'query' => $query,
         ]);
 
-        $this->load($params);
-
-        if (!$this->validate()) {
+        if (!($this->load($params) && $this->validate())) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
         }
 
-        // grid filtering conditions
-        $query->andFilterWhere([
+        /* grid filtering conditions*/
+        $query->orFilterWhere([
             'id' => $this->id,
             'coursecatgories_id' => $this->coursecatgories_id,
             'sub_course_id' => $this->sub_course_id,
-            'skilllavel_id' => $this->skilllavel_id,
+            //'name' => $this->name,
         ]);
-
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'teacher', $this->teacher])
-            ->andFilterWhere(['like', 'Price', $this->Price])
-            ->andFilterWhere(['like', 'image', $this->image]);
-
+        $query->andFilterWhere(['like','name', $this->name]);
         return $dataProvider;
     }
 }

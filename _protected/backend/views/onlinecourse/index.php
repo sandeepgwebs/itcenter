@@ -35,9 +35,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'Price',
             [
                 //view images backend
-                'attribute'=>'images',
+                'attribute'=>'image',
                 'value' => function ($model) {
-                    return \yii\helpers\Html::img('@uploads/onlinecourse/' .$model->image,[ 'width' => '80px', 'height' => '80px']);
+                    //return \yii\helpers\Html::img('@uploads/onlinecourse/' .$model->image,[ 'width' => '80px', 'height' => '80px']);
                 },
                 'format' => 'raw',
             ],
