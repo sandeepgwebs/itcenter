@@ -8,7 +8,7 @@
         <ul>
             <li><a href="#">home</a></li>
             <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-            <li>contect</li>
+            <li>contact</li>
         </ul>
     </div>
 </div>
@@ -33,7 +33,7 @@
                          </div>
 
                         <div class="form-group1">
-                            <?= $form->field($model, 'message')->textarea(['rows' => 8,'cols'=>5]) ?>
+                            <?= $form->field($model, 'message')->textarea(['rows' => 8]) ?>
                         </div>
 
                          <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>

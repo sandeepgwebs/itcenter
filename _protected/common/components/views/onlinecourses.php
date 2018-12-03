@@ -24,7 +24,8 @@
                                     <ul>
                                         <li><i class="fa fa-graduation-cap" aria-hidden="true"></i>20 Student</li>
                                         <li><i class="fa fa-star" aria-hidden="true"></i>5 Ratings</li>
-                                     </ul>
+                                        <span class="doller">$<?=$online->Price?></span>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

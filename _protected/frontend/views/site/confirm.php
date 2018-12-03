@@ -3,8 +3,7 @@
     use yii\data\ActiveDataProvider;
     use yii\helpers\Html;
 
-?>
-<?php/*//echo "<pre>";print_r($Newsprovider);die;
+ /*echo "<pre>";print_r($Newsprovider);die;
     echo ListView::widget([
         'dataProvider' =>  $Newsprovider,
         'itemView' => 'newsearch',
@@ -12,6 +11,7 @@
             'name',
         ],
     ]);*/?>
+<div class="confirm-page">
  <div class="online-course">
     <div class="container">
         <div class="row">
@@ -33,6 +33,7 @@
                                 <ul>
                                     <li><i class="fa fa-graduation-cap" aria-hidden="true"></i>20 Student</li>
                                     <li><i class="fa fa-star" aria-hidden="true"></i>5 Ratings</li>
+                                    <span class="doller">$<?=$key['Price']?></span>
                                 </ul>
                             </div>
                         </div>
@@ -41,4 +42,5 @@
             <?php } ?>
         </div>
     </div>
+</div>
 </div>

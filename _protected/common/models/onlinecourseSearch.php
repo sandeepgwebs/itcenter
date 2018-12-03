@@ -18,8 +18,9 @@ class onlinecourseSearch extends onlinecourse
     public function rules()
     {
         return [
+            [['skilllavel_id'], 'required'],
             [['id', 'coursecatgories_id', 'sub_course_id', 'skilllavel_id'], 'integer'],
-            [['name', 'description', 'teacher', 'Price', 'image'], 'safe'],
+            [['name', 'description', 'coursecatgories_id', 'id', 'teacher', 'Price', 'image'], 'safe'],
         ];
     }
 
@@ -61,7 +62,9 @@ class onlinecourseSearch extends onlinecourse
             'id' => $this->id,
             'coursecatgories_id' => $this->coursecatgories_id,
             'sub_course_id' => $this->sub_course_id,
+            'skilllavel_id' => $this->skilllavel_id,
             //'name' => $this->name,
+            //'teacher' => $this->teacher,
         ]);
         $query->andFilterWhere(['like','name', $this->name]);
         return $dataProvider;

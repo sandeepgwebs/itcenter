@@ -22,9 +22,9 @@ use yii\widgets\ActiveForm;
     <div class="slider-form">
          <?php $form = ActiveForm::begin(['action' => 'searchresult','method' => 'get']); ?>
         <div class="dropdown_item_select home_search_input ">
-            <?php  $dataCategory=ArrayHelper::map(common\models\coursecatgories::find()->asArray()->all(), 'id', 'name');
+            <?php $dataCategory=ArrayHelper::map(common\models\coursecatgories::find()->asArray()->all(), 'id', 'name');
                echo $form->field($model, 'coursecatgories_id')->dropDownList($dataCategory,
-               ['prompt'=>'-Choose a Category-',
+               ['prompt'=>'Select Course',
                'onchange'=>'
                $.post( "'.Yii::$app->urlManager->createUrl('site/lists?id=').'"+$(this).val(), function( data ) {
                $( "select#name" ).html( data );
@@ -34,21 +34,20 @@ use yii\widgets\ActiveForm;
 
         <div class="dropdown_item_select home_search_input ">
            <?php $dataPost=ArrayHelper::map(common\models\sub_course::find()->asArray()->all(), 'id', 'name');
-                echo $form->field($model, 'id')
+                echo $form->field($model, 'sub_course_id')
                     ->dropDownList(
                     $dataPost,
-                    ['id'=>'name']
+                    ['prompt'=>'course Type','id'=>'name']
                 )->label(false);
            ?>
         </div>
 
         <div class="dropdown_item_select home_search_input ">
-             <?= $form->field($model, 'name')->label(false);?>
+            <?php  echo $form->field($model, 'skilllavel_id')->dropDownList(ArrayHelper::map(common\models\skilllavel::find()->all(),'id','name'),['prompt'=>'Skill Level']);?>
         </div>
          <?= Html::submitButton('Search', ['class' => 'home_search_button']) ?>
         <?php ActiveForm::end(); ?>
     </div>
-
 </div>
 
 <div class="learning">
@@ -127,7 +126,7 @@ use yii\widgets\ActiveForm;
             <div class="col-sm-6">
                 <div class="form">
                     <h1>courses now</h1>
-                    <?php /*$form = ActiveForm::begin(['action' => 'contect','method' => 'GET']); ?>
+                    <?php /* $form = ActiveForm::begin(['action' => 'contect','method' => 'GET']); ?>
                         <div class="form-group">
                             <?= $form->field($model, 'name') ?>
                         </div>
@@ -146,7 +145,7 @@ use yii\widgets\ActiveForm;
 
                         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
 
-                     <?php ActiveForm::end();  */?>
+                     <?php ActiveForm::end();   */?>
                 </div>
             </div>
         </div>

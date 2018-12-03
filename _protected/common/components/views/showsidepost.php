@@ -15,7 +15,7 @@
                 </div>
                 <div class="latest-title">
                     <a href="#"><?= $side->name ?></a><br>
-                    <span class="rate">$250</span>
+                    <span class="rate">$<?=$side->Price?></span>
                 </div>
             </div>
             <?php

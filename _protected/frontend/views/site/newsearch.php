@@ -19,7 +19,7 @@
                         <ul>
                             <li><i class="fa fa-graduation-cap" aria-hidden="true"></i>20 Student</li>
                             <li><i class="fa fa-star" aria-hidden="true"></i>5 Ratings</li>
-                            <span class="doller">$250</span>
+                            <span class="doller">$<?=$model->Price?></span>
                         </ul>
                     </div>
                 </div>

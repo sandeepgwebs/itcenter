@@ -22,8 +22,6 @@
                 <?php } ?>
             </div>
         </div>
-        <div class="view-all">
-            <a href="#">load more</a>
-        </div>
+
     </div>
 </div>

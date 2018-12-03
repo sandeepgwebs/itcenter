@@ -4,7 +4,7 @@ use Yii\helpers\Url;
 <div id="wrapper">
     <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
-            <ul class="nav metismenu" id="side-menu">
+            <ul class="nav metismenu" id="side-menus">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
                             <img alt="image" class="img-circle" src="<?=yii::$app->view->theme->baseUrl?>/img/profile_small.jpg" />
@@ -25,8 +25,8 @@ use Yii\helpers\Url;
                     </div>
                 </li>
                 <li>
-                    <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
+                    <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-levels">
                         <li><a href="<?=Url::base()?>/slider/">Slider Images</a><span class="label label-primary pull-right">NEW</span></li>
                         <li><a href="<?=Url::base()?>/coursecatgories">Course Catgories</a></li>
                         <li><a href="<?=Url::base()?>/skilllavel">Skill Level</a></li>

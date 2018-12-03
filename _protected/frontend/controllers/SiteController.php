@@ -17,11 +17,11 @@ use yii\filters\AccessControl;
 use Yii;
 use common\models\customForm;
 use common\models\customformSearch;
-use common\models\coursenow;
+use common\models\sub_course;
 use common\models\onlinecourseSearch;
 use common\models\onlinecourse;
-use common\models\usercourse;
-use common\models\sub_course;
+
+use common\models\selectcourse;
 
 /**
  * Site controller.
@@ -147,7 +147,8 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $model = new Sub_course();
+        // real $model = new Selectcourse();
+        $model = new onlinecourseSearch();
         if($model->load(Yii::$app->request->post()) && $model->save()){
             return $this->refresh();
         }
@@ -169,7 +170,7 @@ class SiteController extends Controller
 
     public function actionSearchresult()
     {
-        $searchModel = new onlinecourseSearch();
+        $searchModel = new OnlinecourseSearch();
         $dataprovider = $searchModel->search(Yii::$app->request->queryParams);
         $Newsproviders = $dataprovider->getModels() ;
         return $this->render('confirm', [

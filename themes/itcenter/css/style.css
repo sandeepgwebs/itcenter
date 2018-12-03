@@ -142,7 +142,7 @@ h6 {
     margin: 0;
 }
 .navbar-default {
-    background-color: #ffff;
+    background-color: #fff;
     border-color: #e7e7e7;
     margin-bottom: 0;
     padding: 22px;
@@ -245,8 +245,11 @@ h6 {
 }
 .online-course {
     background-image: url("../images/courses_background.jpg");
-	  padding-bottom: 45px;
+    padding-bottom: 45px;
  }
+.confirm-page .online-course {
+    padding-top: 45px;
+}
 .traning{
 	border-radius: 6px;
     box-shadow: 0 1px 10px rgba(29, 34, 47, 0.1);
@@ -295,6 +298,7 @@ h6 {
     float: right;
     font-size: 22px;
 }
+
 .view-all {
     padding: 60px 0;
     text-align: center;
@@ -397,10 +401,12 @@ h6 {
     background: #fff none repeat scroll 0 0;
     border: 1px solid;
     height: 61px;
-    padding: 19px 1px 0 8px;
+    padding: 18px 4px;
     position: relative;
-    width: 64px;
-	 float: left;
+
+    float: left;
+    font-size: 13px;
+    color: #14bdee;
 }
 .davet {
     display: block;
