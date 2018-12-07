@@ -18,7 +18,7 @@ class onlinecourseSearch extends onlinecourse
     public function rules()
     {
         return [
-            [['skilllavel_id'], 'required'],
+            [['skilllavel_id'], 'required','message' => 'Please select all fields.'],
             [['id', 'coursecatgories_id', 'sub_course_id', 'skilllavel_id'], 'integer'],
             [['name', 'description', 'coursecatgories_id', 'id', 'teacher', 'Price', 'image'], 'safe'],
         ];

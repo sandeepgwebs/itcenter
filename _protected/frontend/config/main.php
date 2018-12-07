@@ -36,6 +36,23 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        //facboook
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'facebook' => [
+                    'class' => 'yii\authclient\clients\Facebook',
+                    'authUrl' => 'https://www.facebook.com/dialog/oauth?display=popup',
+                    'clientId' => '269069637110564',
+                    'clientSecret' => '83ca789040694ea3d8d3e1f947942e62',
+                    //'attributeNames' => ['name', 'email', 'first_name', 'last_name'],
+                ],
+
+            ],
+        ],
+
     ],
     'params' => $params,
+
+
 ];

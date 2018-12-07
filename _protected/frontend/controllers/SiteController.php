@@ -20,9 +20,9 @@ use common\models\customformSearch;
 use common\models\sub_course;
 use common\models\onlinecourseSearch;
 use common\models\onlinecourse;
-
-use common\models\selectcourse;
-
+use yii\authclient\ClientInterface;
+use common\models\auth;
+use common\components\AuthHandler;
 /**
  * Site controller.
  * It is responsible for displaying static pages, logging users in and out,
@@ -78,7 +78,17 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
+
+            'auth' => [
+                'class' => 'yii\authclient\AuthAction',
+                'successCallback' => [$this, 'oAuthSuccess'],
+            ],
         ];
+    }
+     //facebook
+    public function oAuthSuccess($client)
+    {
+        (new AuthHandler($client))->handle();
     }
 
 //------------------------------------------------------------------------------------------------//
@@ -119,6 +129,16 @@ class SiteController extends Controller
     public function actionPage()
     {
         return $this->render('page');
+    }
+
+    public function actionTerms_and_conditions()
+    {
+        return $this->render('terms-and-conditions');
+    }
+
+    public function actionPrivacy_policy()
+    {
+        return $this->render('privacy-policy');
     }
 //custom forms
     public function actionContect()

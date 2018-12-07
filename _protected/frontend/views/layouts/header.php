@@ -37,8 +37,9 @@
                 <li><?= Html::a('blog', ['site/blog'], []) ?></li>
                 <li><?= Html::a('page', ['site/page'], []) ?></li>
                 <li><?= Html::a('contact', ['site/contect'], []) ?></li>
-                <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-            </ul>
+                <li><?= Html::a('terms&conditions', ['site/terms_and_conditions'], []) ?></li>
+                <li><?= Html::a('privacy&policy', ['site/privacy_policy'], []) ?></li>
+             </ul>
         </div>
     </nav>
 </div>

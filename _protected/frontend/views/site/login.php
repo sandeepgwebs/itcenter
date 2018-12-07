@@ -1,6 +1,8 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\authclient\ClientInterface;
+use yii\authclient\widgets\AuthChoice;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -30,10 +32,17 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'password')->passwordInput() ?>
         <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
+        <?= yii\authclient\widgets\AuthChoice::widget([
+            'baseAuthUrl' => ['site/auth'],
+            'popupMode' => false,
+        ]) ?>
+
         <div style="color:#999;margin:1em 0">
             <?= Yii::t('app', 'If you forgot your password you can') ?>
             <?= Html::a(Yii::t('app', 'reset it'), ['site/request-password-reset']) ?>.
             <?= Html::a('signup', ['site/signup'], []) ?>
+
+
         </div>
 
         <div class="form-group">
